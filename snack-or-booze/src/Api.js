@@ -10,19 +10,19 @@ const BASE_API_URL = "http://localhost:5000";
 */
 
 class SnackOrBoozeApi {
-
+//get all drinks
   static async getSnacks() {
     const result = await axios.get(`${BASE_API_URL}/snacks`);
     return result.data;
   }
-
+//gets all snacks
   static async getDrinks()
  {
   const result = await axios.get(`${BASE_API_URL}/drinks`);
   console.log(result)
   return result.data;
  }
-
+//posts data to the api so food and drinks can be added
  static async postItem(data){
   const {type, ...itemInfo} = data;
   await axios.post(`${BASE_API_URL}/${type}`, itemInfo);

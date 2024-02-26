@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
 import "./AddItemForm.css"
 
-
+//From that sends data to postItem() and is used to create new food or drinks
 function AddItemForm({postItem}){
     const INITIAL_STATE = {type: "snacks",
                             name: "",
@@ -10,13 +10,13 @@ function AddItemForm({postItem}){
                             recipe: "",
                             serve: ""}
     const [newItemInfo, setNewItemInfo] = useState(INITIAL_STATE)
-
+    //calls postItem and adds item to db
     function handleSubmit(e){
         e.preventDefault();
         postItem(newItemInfo);
         console.log(newItemInfo.type)
     }
-
+    //updates form data obj in state on input change
     function handleChange(e){
         const {name, value} = e.target;
         setNewItemInfo(info => ({
@@ -24,7 +24,7 @@ function AddItemForm({postItem}){
             [name]: value
         }))
     }
-
+    //renders form for new food or drink creation 
     return(
         <Card>
             <CardBody>
@@ -48,13 +48,13 @@ function AddItemForm({postItem}){
             onChange={handleChange}/>
             <br/>
             <CardTitle>What is the item called?</CardTitle>
-            <input type="text" name="name" required onChange={handleChange}></input>
+            <input placeholder="Name" type="text" name="name" required onChange={handleChange}></input>
             <CardTitle>Describe the item</CardTitle>
-            <input type="text" name="description" required onChange={handleChange}></input>
+            <input placeholder="Description" type="text" name="description" required onChange={handleChange}></input>
             <CardTitle>What is the recipe?</CardTitle>
-            <input type="text" name="recipe" required onChange={handleChange}></input>
+            <input  placeholder="Recipe" type="text" name="recipe" required onChange={handleChange}></input>
             <CardTitle>How do you serve the item?</CardTitle>
-            <input type="text" name="serve" required onChange={handleChange}></input>
+            <input placeholder="Serve" type="text" name="serve" required onChange={handleChange}></input>
             <button>Add Item</button>
             </form>    
             </CardBody>
